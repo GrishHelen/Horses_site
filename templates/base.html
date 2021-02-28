@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='../static/css/styles.css') }}" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <title>{{ title }}</title>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <h1>*Название*</h1>
+        {% if current_user.is_authenticated %}
+        <p>
+            <a class="btn btn-success" href="/add_note">Добавить запись</a>
+            <a>&nbsp;</a>
+            <a class="navbar-brand" href="/logout">{{ current_user.login }}</a>
+        </p>
+        {% else %}
+        <p>
+            <a class="btn btn-success" href="/login">Войти</a>
+        </p>
+        {% endif %}
+    </nav>
+</header>
+<!-- Begin page content -->
+<main role="main" class="container">
+    {% block content %}
+    {% endblock %}
+</main>
+</body>
+</html>
+

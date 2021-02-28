@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Новая запись</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    <p>
+    <div>Выберите дату</div>
+    <select name="date" style="font-size: 13pt;">
+        {% if form.date.data == '' %}
+            <option disabled="disabled" selected="selected"></option>
+        {% endif %}
+        {% for date in dates %}
+        {% if form.date.data == date %}
+            <option selected="selected">{{date}}</option>
+        {% else %}
+            <option>{{date}}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+    </p>
+
+    <p>
+    <div>Выберите время</div>
+    <select name="time" style="font-size: 13pt;">
+        {% if form.time.data == "" %}
+            <option disabled="disabled" selected="selected"></option>
+        {% endif %}
+        {% if form.time.data == "8:00" %}
+            <option selected="selected">8:00</option>
+        {% else %}
+            <option>8:00</option>
+        {% endif %}
+        {% if form.time.data == "9:00" %}
+            <option selected="selected">9:00</option>
+        {% else %}
+            <option>9:00</option>
+        {% endif %}
+        {% if form.time.data == "10:00" %}
+            <option selected="selected">10:00</option>
+        {% else %}
+            <option>10:00</option>
+        {% endif %}
+        {% if form.time.data == "11:00" %}
+            <option selected="selected">11:00</option>
+        {% else %}
+            <option>11:00</option>
+        {% endif %}
+        {% if form.time.data == "12:00" %}
+            <option selected="selected">12:00</option>
+        {% else %}
+            <option>12:00</option>
+        {% endif %}
+        {% if form.time.data == "13:00" %}
+            <option selected="selected">13:00</option>
+        {% else %}
+            <option>13:00</option>
+        {% endif %}
+        {% if form.time.data == "14:00" %}
+            <option selected="selected">14:00</option>
+        {% else %}
+            <option>14:00</option>
+        {% endif %}
+        {% if form.time.data == "15:00" %}
+            <option selected="selected">15:00</option>
+        {% else %}
+            <option>15:00</option>
+        {% endif %}
+        {% if form.time.data == "16:00" %}
+            <option selected="selected">16:00</option>
+        {% else %}
+            <option>16:00</option>
+        {% endif %}
+        {% if form.time.data == "17:00" %}
+            <option selected="selected">17:00</option>
+        {% else %}
+            <option>17:00</option>
+        {% endif %}
+        {% if form.time.data == "18:00" %}
+            <option selected="selected">18:00</option>
+        {% else %}
+            <option>18:00</option>
+        {% endif %}
+        {% if form.time.data == "19:00" %}
+            <option selected="selected">19:00</option>
+        {% else %}
+            <option>19:00</option>
+        {% endif %}
+        {% if form.time.data == "20:00" %}
+            <option selected="selected">20:00</option>
+        {% else %}
+            <option>20:00</option>
+        {% endif %}
+
+    </select>
+    </p>
+
+    <p>
+        {{ form.text.label }}<br>
+        {{ form.text(class="form-control") }}<br>
+        {% for error in form.text.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+
+    <p>
+    <div>Выберите лошадь</div>
+    <select name="horse" style="font-size: 13pt;">
+        {% if form.horse.data == "" %}
+            <option selected="selected"></option>
+        {% else %}
+            <option></option>
+        {% endif %}
+        {% if form.horse.data == "Панка" %}
+            <option selected="selected">Панка</option>
+        {% else %}
+            <option>Панка</option>
+        {% endif %}
+        {% if form.horse.data == "Ляля" %}
+            <option selected="selected">Ляля</option>
+        {% else %}
+            <option>Ляля</option>
+        {% endif %}
+        {% if form.horse.data == "Макс" %}
+            <option selected="selected">Макс</option>
+        {% else %}
+            <option>Макс</option>
+        {% endif %}
+        {% if form.horse.data == "Пятно" %}
+            <option selected="selected">Пятно</option>
+        {% else %}
+            <option>Пятно</option>
+        {% endif %}
+        {% if form.horse.data == "Вася" %}
+            <option selected="selected">Вася</option>
+        {% else %}
+            <option>Вася</option>
+        {% endif %}
+        {% if form.horse.data == "Коля" %}
+            <option selected="selected">Коля</option>
+        {% else %}
+            <option>Коля</option>
+        {% endif %}
+        {% if form.horse.data == "Джони" %}
+            <option selected="selected">Джони</option>
+        {% else %}
+            <option>Джони</option>
+        {% endif %}
+        {% if form.horse.data == "Повесть" %}
+            <option selected="selected">Повесть</option>
+        {% else %}
+            <option>Повесть</option>
+        {% endif %}
+        {% if form.horse.data == "Женька" %}
+            <option selected="selected">Женька</option>
+        {% else %}
+            <option>Женька</option>
+        {% endif %}
+        {% if form.horse.data == "Карма" %}
+            <option selected="selected">Карма</option>
+        {% else %}
+            <option>Карма</option>
+        {% endif %}
+        {% if form.horse.data == "Данон" %}
+            <option selected="selected">Данон</option>
+        {% else %}
+            <option>Данон</option>
+        {% endif %}
+        {% if form.horse.data == "Данвия" %}
+            <option selected="selected">Данвия</option>
+        {% else %}
+            <option>Данвия</option>
+        {% endif %}
+        {% if form.horse.data == "Зипон" %}
+            <option selected="selected">Зипон</option>
+        {% else %}
+            <option>Зипон</option>
+        {% endif %}
+    </select>
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    <a href="/del_note/{{ id }}" class="btn btn-danger">Удалить запись</a>
+    {{message}}
+</form>
+{% endblock %}

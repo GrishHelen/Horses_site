@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table
+        style="text-align: left; width: 450px; height: 40px; background-color: #DEF0F7; "
+        border="0" cellpadding="0" cellspacing="2">
+    <tbody>
+    <tr>
+        <td style="text-align: center;"><a style="color: #646464;" href="/ago">
+            Прошлые 2 недели</a></td>
+        <td style="text-align: center;"><a style="color: #646464;" href="/today">
+            Сегодня</a></td>
+        <td style="text-align: center"><a style="color: #646464;" href="/next">
+            Следующие 2 недели</a></td>
+    </tr>
+    </tbody>
+</table>
+<br>
+
+<h4>{{ date }}</h4>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2"
+       cellspacing="0">
+    <tbody>
+    {% for time in dict %}
+        <tr>
+            <td style="vertical-align: top; text-align: center; width: 10%;">{{time}}</td>
+            <td style="vertical-align: top;">
+                {% for note in dict[time] %}
+                {% if note.text != '-' and note.text != ''%}
+                    <div>Имя ребенка: {{note.text}}</div>
+                    <div>Лошадь: {{note.horse}}</div>
+                    <div>______________________________________________</div>
+                {% else %}
+                    <br>
+                {% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<br><br>
+{% endblock %}
